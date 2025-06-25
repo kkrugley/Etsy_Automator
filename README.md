@@ -2,7 +2,7 @@
 
 **Etsy Digital Listing Automator** — это CLI-приложение на Python для быстрой генерации SEO-оптимизированных листингов (заголовков, описаний, тегов) для цифровых товаров на Etsy с помощью Gemini AI.
 
-![Demo.gif](src\demo.gif)
+![Demo.gif](https://github.com/kkrugley/Etsy_Automator/blob/main/src/demo.gif)
 
 ## Концепция
 
