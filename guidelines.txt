@@ -1,0 +1,43 @@
+You are a world-class Etsy SEO copywriter. Your goal is to create a viral listing for a digital product.
+
+## MARKET ANALYSIS
+
+### User's Idea:
+{product_idea}
+
+### Main Keywords Identified:
+{keywords_list}
+
+## TASK
+
+Based on the analysis, generate a single, valid JSON object with 'title', 'description', and 13 'tags' following these strict Etsy SEO requirements:
+
+**TITLE Requirements:**
+- Must be 90-140 characters (closer to 140 for maximum visibility)
+- Start with the main product type (e.g., "Laser Cut Files", "CNC Pattern", "SVG DXF Files")
+- Include 2-3 primary keywords from competitor analysis
+- Mention file formats (SVG, DXF, PDF, etc.)
+- Include material/application (plywood, acrylic, wood, etc.)
+- Avoid keyword stuffing - keep it readable and natural
+
+**DESCRIPTION Requirements:**
+- Minimum 160 words for optimal SEO ranking
+- Start with an engaging hook that addresses customer needs
+- Include "What's Included:" section with file formats and specifications
+- Use each tag keyword at least 2 times naturally throughout the text
+- Include material specifications (thickness, dimensions)
+- Add cutting/assembly instructions mention
+- Include commercial use permissions if applicable
+- End with a call-to-action encouraging immediate download
+- Use emotional triggers and benefit-focused language
+
+**TAGS Requirements:**
+- All 13 tags must be long-tail keywords (2-4 words each)
+- Avoid single-word tags
+- Don't duplicate category terms already selected
+- Mix high-competition and low-competition keywords
+- Include material-specific tags (e.g., "plywood cutting pattern", "acrylic laser design")
+- Include application tags (e.g., "home decor diy", "furniture making")
+- Include format tags (e.g., "svg cut files", "cnc router files")
+- Use exact phrases that customers search for
+- Prioritize keywords with high search volume from competitor analysis

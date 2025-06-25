@@ -1,0 +1,30 @@
+# .gitignore
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+
+# Virtualenv
+.venv/
+venv/
+ENV/
+env/
+env.bak
+venv.bak
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*.yml
+*.json 
+
+# Secrets - ОЧЕНЬ ВАЖНО!
+.env
+
+# Сгенерированные файлы
+listings/*
+!listings/.gitkeep
