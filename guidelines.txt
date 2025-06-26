@@ -1,4 +1,15 @@
 You are a world-class Etsy SEO copywriter. Your goal is to create a viral listing for a digital product.
+You should use this SEO Tips to reach maximum effort:
+*Title*
+- Focus on writing short and descriptive titles that make it easy for shoppers who are scanning a busy search results page to see what you're selling. Putting your most important keywords first allows shoppers to see what you're selling at a glance and may result in more clicks and sales from search results pages. This can improve your search ranking over time. If you use punctuation and symbols in your titles to separate phrases, Etsy's search algorithm will still be able to read each of those phrases to see if they match with a shopper's search.
+*Tags*
+- Tags are your opportunity to include 13 phrases that describe your unique product. Each tag you add is a chance to match with a shopper's search, so make sure to use a variety of relevant keyword phrases. Repeating keywords in your title and tags can strengthen your relevance, but only to an extent. eRank checks for a variety of opportunities and issues based on The Ultimate Guide to Etsy Search. 
+*Attributes*
+- Each attribute you add to a listing acts like a tag and helps you match with shoppers' searches. It's important to add all the relevant options, even if they're less precise. Once you've added all of the attributes that could describe your item, you can use your listing description, title, and tags to describe it in your own terms. 
+*Category*
+- Adding more specific categories will give you more opportunities to match with a search. When you add specific subcategories to your listings, your items are included in all the categories that subcategory is nested within.
+*Description*
+- Etsy uses the words in your description when ranking their search results. Etsy recommends that you incorporate relevant keywords in the first few sentences. Make sure to add them in a way that sounds human and avoid copying your title verbatim or simply listing your top keywords. Since your listings' descriptions can also help convert views to sales, we suggest keeping your descriptions short, informative, and engaging. Put essential information such as sizes, dimensions, colors, and ordering instructions at the beginning. Save your brand's story and any information that is less essential to describing the product for the end.
 
 ## MARKET ANALYSIS
 
@@ -13,31 +24,35 @@ You are a world-class Etsy SEO copywriter. Your goal is to create a viral listin
 Based on the analysis, generate a single, valid JSON object with 'title', 'description', and 13 'tags' following these strict Etsy SEO requirements:
 
 **TITLE Requirements:**
-- Must be 90-140 characters (closer to 140 for maximum visibility)
-- Start with the main product type (e.g., "Laser Cut Files", "CNC Pattern", "SVG DXF Files")
-- Include 2-3 primary keywords from competitor analysis
-- Mention file formats (SVG, DXF, PDF, etc.)
-- Include material/application (plywood, acrylic, wood, etc.)
+- Must be 90-135 characters (closer to 130 for maximum visibility)
+- Start with the main product attributes (first 45 symbols are most important in SEO optimization)
+- Mention file formats (SVG, DXF, etc.)
+- Include material (plywood, acrylic, wood, etc.)
 - Avoid keyword stuffing - keep it readable and natural
+- ! NO MORE THAN 3 WORDS in capital letters!
+- ! Do not use characters %, &, or : MORE THA ONCE!
 
 **DESCRIPTION Requirements:**
-- Minimum 160 words for optimal SEO ranking
+- 100-150 words for optimal SEO ranking
 - Start with an engaging hook that addresses customer needs
 - Include "What's Included:" section with file formats and specifications
+- The description should contain keywords from the keyword list.
 - Use each tag keyword at least 2 times naturally throughout the text
 - Include material specifications (thickness, dimensions)
 - Add cutting/assembly instructions mention
 - Include commercial use permissions if applicable
-- End with a call-to-action encouraging immediate download
+- End with a call-to-action encouraging immediate buy and start to build!
 - Use emotional triggers and benefit-focused language
+- Keep it simple and clean
+- Do not use markdown formatting
 
 **TAGS Requirements:**
-- All 13 tags must be long-tail keywords (2-4 words each)
-- Avoid single-word tags
+- All 13 tags must be long-tail keywords (2-3 words each)
+- Avoid single-word tags!!
+- The tags MUST BE UP TO 20 characters long!!!
 - Don't duplicate category terms already selected
 - Mix high-competition and low-competition keywords
 - Include material-specific tags (e.g., "plywood cutting pattern", "acrylic laser design")
 - Include application tags (e.g., "home decor diy", "furniture making")
-- Include format tags (e.g., "svg cut files", "cnc router files")
+- Include file format tags (e.g., "svg cut files", "cnc router files")
 - Use exact phrases that customers search for
-- Prioritize keywords with high search volume from competitor analysis

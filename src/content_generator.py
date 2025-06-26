@@ -51,7 +51,7 @@ def generate_listing_content(product_idea: str, analysis_data: Dict[str, Any]) -
 
     try:
         genai.configure(api_key=api_key)
-        model = genai.GenerativeModel('gemini-1.5-flash-latest') # Возвращаю стабильную модель
+        model = genai.GenerativeModel('gemini-2.5-flash') # Возвращаю стабильную модель
         model.safety_settings = {  # type: ignore
             'HARM_CATEGORY_HARASSMENT': 'BLOCK_NONE', 'HARM_CATEGORY_HATE_SPEECH': 'BLOCK_NONE',
             'HARM_CATEGORY_SEXUALLY_EXPLICIT': 'BLOCK_NONE', 'HARM_CATEGORY_DANGEROUS_CONTENT': 'BLOCK_NONE',
