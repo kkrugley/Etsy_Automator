@@ -1,0 +1,121 @@
+:root {
+    /* Палитра в стиле Material Design 3 Dark Theme */
+    --background-color: #1C1B1F; /* Чуть фиолетовый черный */
+    --surface-color: #2b2930;
+    --text-color: #E6E1E5;
+    --primary-color: #D0BCFF; /* Основной акцентный цвет */
+    --secondary-color: #CCC2DC;
+    --outline-color: #938F99;
+    --error-color: #F2B8B5;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    font-family: 'Fira Code', monospace;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: 100vh;
+}
+
+.terminal-window {
+    width: 50%;
+    background-color: var(--surface-color);
+    padding: 24px;
+    box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.3); /* MD3 Elevation */
+    border: 1px solid var(--outline-color);
+    border-radius: 16px; /* Более мягкие углы */
+    transition: width 0.3s ease-in-out;
+}
+
+.terminal-header {
+    margin-bottom: 24px;
+    font-size: 0.9em;
+    color: var(--secondary-color);
+}
+
+.prompt-user { color: var(--primary-color); }
+.prompt-path { color: #A8C7FA; }
+
+.input-section {
+    margin-bottom: 24px;
+    position: relative;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--primary-color);
+    font-size: 0.8em;
+}
+
+input[type="password"], textarea {
+    width: 100%;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 1px solid var(--outline-color);
+    padding: 16px;
+    font-family: inherit;
+    font-size: 1em;
+    box-sizing: border-box;
+    border-radius: 8px; /* Скругленные поля */
+    transition: border-color 0.2s;
+}
+
+input[type="password"]:focus, textarea:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    border-width: 2px;
+    padding: 15px;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+#status-line {
+    margin-top: 24px;
+    color: var(--secondary-color);
+    min-height: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.loader {
+    display: inline-block;
+    vertical-align: middle;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-top: 3px solid var(--primary-color);
+    border-radius: 50%;
+    width: 16px;
+    height: 16px;
+    animation: spin 1s linear infinite;
+    margin-right: 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+#result-container {
+    margin-top: 24px;
+    border-top: 1px solid var(--outline-color);
+    padding-top: 24px;
+}
+
+.result-block { margin-bottom: 24px; }
+.result-title { color: var(--primary-color); margin: 0 0 10px 0; font-size: 1.1em; }
+p { white-space: pre-wrap; line-height: 1.7; color: var(--secondary-color); }
+
+/* Адаптивный дизайн */
+@media (max-width: 900px) {
+    .terminal-window {
+        width: 100%;
+        padding: 16px;
+    }
+}

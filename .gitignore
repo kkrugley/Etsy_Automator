@@ -19,7 +19,8 @@ venv.bak
 .idea/
 *.swp
 *.swo
-*.yml
+config.yml
+demoyml
 *.json 
 *.exe
 

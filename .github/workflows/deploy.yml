@@ -1,0 +1,47 @@
+# Название нашего автоматического процесса
+name: Deploy Web App to GitHub Pages
+
+# Триггер: запускать этот процесс при каждом пуше в ветку 'web'
+on:
+  push:
+    branches:
+      - web
+
+# Разрешения: даем нашему роботу права на запись для публикации сайта
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Отменяем предыдущие запуски, если пришел новый пуш
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+# Задачи, которые нужно выполнить
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      # Шаг 1: Скачиваем код из ветки 'web'
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      # Шаг 2: Настраиваем окружение для публикации
+      - name: Set up Pages
+        uses: actions/configure-pages@v5
+
+      # Шаг 3: Упаковываем сайт в "артефакт"
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # Указываем, что все файлы сайта лежат в корне проекта
+          path: '.'
+
+      # Шаг 4: Публикуем артефакт как сайт
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

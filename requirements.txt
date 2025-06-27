@@ -1,9 +1,0 @@
-# Основные библиотеки
-rich==13.7.1
-python-dotenv==1.0.1
-google-generativeai==0.5.4
-
-# Инструменты для разработки
-black==24.4.2
-pylint==3.1.0
-pytest==8.2.0

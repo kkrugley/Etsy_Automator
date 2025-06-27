@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Etsy Listing Automator</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="terminal-window">
+        <!-- ЭКРАН 1: ЗАПРОС API КЛЮЧА (виден только при первом запуске) -->
+        <div id="api-key-view">
+            <header class="terminal-header">
+                <span class="prompt-user">system@EtsyAutomator</span>:<span class="prompt-path">~</span>$ 
+                Требуется настройка...
+            </header>
+            <div class="input-section">
+                <label for="apiKey">Введите ваш GEMINI_API_KEY и нажмите Enter:</label>
+                <input type="password" id="apiKey" placeholder="Ваш ключ будет сохранен локально в браузере...">
+            </div>
+        </div>
+
+        <!-- ЭКРАН 2: ОСНОВНОЕ ПРИЛОЖЕНИЕ (скрыт до ввода ключа) -->
+        <div id="main-app-view" style="display: none;">
+            <header class="terminal-header">
+                <span class="prompt-user">user@EtsyAutomator</span>:<span class="prompt-path">~</span>$ 
+                ./generate_listing --idea="..."
+            </header>
+            <div class="input-section">
+                <label for="productIdea">Опишите ваш товар и нажмите Enter:</label>
+                <textarea id="productIdea" rows="3" placeholder="например, Laser cut files for geometric mountain wall art..."></textarea>
+            </div>
+            
+            <div id="status-line">
+                <!-- Сюда будет выводиться статус "Генерация..." или результат -->
+            </div>
+            
+            <!-- Секция для вывода результата -->
+            <div id="result-container" style="display: none;">
+                <div class="result-block">
+                    <h3 class="result-title">Title:</h3>
+                    <p id="result-title-content"></p>
+                </div>
+                <div class="result-block">
+                    <h3 class="result-title">Description:</h3>
+                    <p id="result-description-content"></p>
+                </div>
+                <div class="result-block">
+                    <h3 class="result-title">Tags:</h3>
+                    <p id="result-tags-content"></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
