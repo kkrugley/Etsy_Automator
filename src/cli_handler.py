@@ -11,8 +11,7 @@ from rich.prompt import Prompt
 from rich.table import Table
 from dotenv import set_key, get_key
 
-# Импорты наших упрощенных модулей
-from src.data_analyzer import analyze_idea
+# Импортируем только генератор
 from src.content_generator import generate_listing_content
 
 console = Console()
@@ -53,14 +52,10 @@ def settings_menu():
             title="[yellow]⚙️ Меню настроек[/yellow]",
             border_style="yellow"
         ))
-        choice = Prompt.ask("[bold]Выберите опцию[/bold]", choices=["1", "2", "G"], default="3")
-
-        if choice == '1':
-            clear_screen(); update_api_key()
-        elif choice == '2':
-            edit_file_in_notepad("guidelines.txt")
-        elif choice == '3':
-            break
+        choice = Prompt.ask("[bold]Выберите опцию[/bold]", choices=["1", "2", "3"], default="3")
+        if choice == '1': clear_screen(); update_api_key()
+        elif choice == '2': edit_file_in_notepad("guidelines.txt")
+        elif choice == '3': break
 
 def create_new_listing():
     clear_screen()
@@ -70,19 +65,14 @@ def create_new_listing():
         console.print("[bold red]Описание не может быть пустым.[/bold red]\n"); return
 
     clear_screen()
-    analysis_data = analyze_idea(product_idea)
-    if not analysis_data:
-        console.print("[bold red]Нажмите Enter для возврата в меню.[/bold red]"); Prompt.ask(); return
-    
-    listing_data = generate_listing_content(product_idea, analysis_data)
+    listing_data = generate_listing_content(product_idea)
     if not listing_data:
         console.print("[bold red]Нажмите Enter для возврата в меню.[/bold red]"); Prompt.ask(); return
 
-    # ... (остальные функции для отображения и сохранения остаются без изменений)
     display_generated_content(listing_data)
     save = Prompt.ask("\n[bold]Сохранить этот листинг в JSON-файл?[/bold]", choices=["y", "n"], default="y")
     if save == 'y':
-        save_listing_to_file(product_idea, listing_data, analysis_data)
+        save_listing_to_file(product_idea, listing_data)
     Prompt.ask("\n[bold]Нажмите Enter, чтобы вернуться в главное меню...[/bold]")
 
 def display_generated_content(listing_data: dict):
@@ -95,15 +85,16 @@ def display_generated_content(listing_data: dict):
     tags_panel = Panel(', '.join(listing_data.get('tags', [])), title="[bold cyan]Теги (13 шт.)[/bold cyan]", border_style="cyan")
     console.print(tags_panel)
 
-def save_listing_to_file(product_idea: str, listing_data: dict, analysis_data: dict):
+def save_listing_to_file(product_idea: str, listing_data: dict):
     if not os.path.exists('listings'): os.makedirs('listings')
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
     file_slug = re.sub(r'[^\w\s-]', '', listing_data.get('title', 'untitled').lower()).strip()
     file_slug = re.sub(r'[\s_-]+', '-', file_slug)[:50]
     filename = f"listings/{timestamp}_{file_slug}.json"
     full_data = {
-        "product_idea": product_idea, "generated_at_utc": datetime.utcnow().isoformat(),
-        "listing_data": listing_data, "analysis_data": analysis_data
+        "product_idea": product_idea,
+        "generated_at_utc": datetime.utcnow().isoformat(),
+        "listing_data": listing_data
     }
     try:
         with open(filename, 'w', encoding='utf-8') as f: json.dump(full_data, f, ensure_ascii=False, indent=4)

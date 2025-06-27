@@ -21,6 +21,7 @@ venv.bak
 *.swo
 *.yml
 *.json 
+*.exe
 
 # Secrets - ОЧЕНЬ ВАЖНО!
 .env

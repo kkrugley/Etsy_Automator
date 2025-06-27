@@ -16,12 +16,9 @@ You should use this SEO Tips to reach maximum effort:
 ### User's Idea:
 {product_idea}
 
-### Main Keywords Identified:
-{keywords_list}
-
 ## TASK
 
-Based on the analysis, generate a single, valid JSON object with 'title', 'description', and 13 'tags' following these strict Etsy SEO requirements:
+Your task is to take the user's raw product idea below and generate a single, valid JSON object containing 'title', 'description', and 13 'tags'.
 
 **TITLE Requirements:**
 - Must be 90-135 characters (closer to 130 for maximum visibility)
@@ -56,3 +53,6 @@ Based on the analysis, generate a single, valid JSON object with 'title', 'descr
 - Include application tags (e.g., "home decor diy", "furniture making")
 - Include file format tags (e.g., "svg cut files", "cnc router files")
 - Use exact phrases that customers search for
+
+**IMPORTANT FINAL INSTRUCTION:**
+The entire output must be ONLY the raw JSON object. Do not include any introductory text, explanations, comments, or markdown formatting like
