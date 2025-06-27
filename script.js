@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // --- Получаем все нужные элементы со страницы ---
+    // --- НАСТРОЙКИ ---
+    // Используем имя модели в точности как в твоей документации
+    const MODEL_NAME = 'gemini-2.5-flash'; 
+    const API_VERSION = 'v1beta'; // Указываем версию API
+    // -----------------
+
     const apiKeyView = document.getElementById('api-key-view');
     const mainAppView = document.getElementById('main-app-view');
     const apiKeyInput = document.getElementById('apiKey');
@@ -11,7 +16,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const resultDescription = document.getElementById('result-description-content');
     const resultTags = document.getElementById('result-tags-content');
 
-    // --- Главная логика при загрузке страницы ---
     function initialize() {
         const savedApiKey = localStorage.getItem('geminiApiKey');
         if (savedApiKey) {
@@ -21,7 +25,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // --- Функции для переключения "экранов" ---
     function showApiKeyPrompt() {
         apiKeyView.style.display = 'block';
         mainAppView.style.display = 'none';
@@ -34,22 +37,17 @@ document.addEventListener('DOMContentLoaded', () => {
         productIdeaInput.focus();
     }
     
-    // --- Обработчики событий ---
-
-    // 1. Ввод API ключа и нажатие Enter
     apiKeyInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
             const apiKey = apiKeyInput.value.trim();
             if (apiKey) {
                 localStorage.setItem('geminiApiKey', apiKey);
-                console.log('API Key saved.');
                 showMainApp();
             }
         }
     });
 
-    // 2. Ввод идеи товара и нажатие Enter
     productIdeaInput.addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
             event.preventDefault();
@@ -57,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // --- Основная функция генерации ---
     async function handleGeneration() {
         const apiKey = localStorage.getItem('geminiApiKey');
         const productIdea = productIdeaInput.value.trim();
@@ -71,30 +68,39 @@ document.addEventListener('DOMContentLoaded', () => {
         resultContainer.style.display = 'none';
 
         try {
-            // Загружаем шаблон промпта
             const templateResponse = await fetch('guidelines.txt');
             if (!templateResponse.ok) throw new Error("Не удалось загрузить guidelines.txt");
             const template = await templateResponse.text();
-
-            // Формируем промпт
             const prompt = template.replace('{product_idea}', productIdea);
             
-            // Отправляем запрос к Gemini API
-            const apiResponse = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`, {
+            // --- ИСПРАВЛЕНИЕ ЗДЕСЬ ---
+            // Формируем URL и тело запроса в точности по официальной документации
+            const apiUrl = `https://generativelanguage.googleapis.com/${API_VERSION}/models/${MODEL_NAME}:generateContent?key=${apiKey}`;
+            
+            const requestBody = {
+                contents: [{
+                    parts: [{
+                        text: prompt
+                    }]
+                }]
+            };
+            // ------------------------
+
+            const apiResponse = await fetch(apiUrl, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                body: JSON.stringify(requestBody)
             });
 
             if (!apiResponse.ok) {
                 const errorData = await apiResponse.json();
-                throw new Error(`API Error: ${errorData.error.message}`);
+                const errorMessage = errorData?.error?.message || 'Неизвестная ошибка API';
+                throw new Error(`API Error: ${errorMessage}`);
             }
 
             const responseData = await apiResponse.json();
             const rawText = responseData.candidates[0].content.parts[0].text;
             
-            // Парсим JSON и отображаем результат
             const cleanedText = rawText.replace(/```json/g, '').replace(/```/g, '').trim();
             const listingData = JSON.parse(cleanedText);
 
@@ -116,14 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
     function setStatus(message, isError = false, clearAfter = 0) {
         statusLine.innerHTML = message;
         statusLine.style.color = isError ? 'var(--error-color)' : 'var(--status-color)';
-
         if (clearAfter > 0) {
-            setTimeout(() => {
-                statusLine.innerHTML = '';
-            }, clearAfter);
+            setTimeout(() => { statusLine.innerHTML = ''; }, clearAfter);
         }
     }
 
-    // --- Запускаем приложение ---
     initialize();
 });
