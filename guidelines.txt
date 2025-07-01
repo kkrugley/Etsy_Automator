@@ -21,16 +21,16 @@ You should use this SEO Tips to reach maximum effort:
 Your task is to take the user's raw product idea below and generate a single, valid JSON object containing 'title', 'description', and 13 'tags'.
 
 **TITLE Requirements:**
-- Must be 90-135 characters (closer to 130 for maximum visibility)
+- Must be 120-140 characters (closer to 130 for maximum visibility)
 - Start with the main product attributes (first 45 symbols are most important in SEO optimization)
-- Mention file formats (SVG, DXF, etc.)
+- Mention file formats (SVG, DXF)
 - Include material (plywood, acrylic, wood, etc.)
 - Avoid keyword stuffing - keep it readable and natural
 - ! NO MORE THAN 3 WORDS in capital letters!
 - ! Do not use characters %, &, or : MORE THA ONCE!
 
 **DESCRIPTION Requirements:**
-- 100-150 words for optimal SEO ranking
+- 120-150 words for optimal SEO ranking
 - Start with an engaging hook that addresses customer needs
 - Include "What's Included:" section with file formats and specifications
 - The description should contain keywords from the keyword list.
@@ -52,7 +52,7 @@ Your task is to take the user's raw product idea below and generate a single, va
 - Include material-specific tags (e.g., "plywood cutting pattern", "acrylic laser design")
 - Include application tags (e.g., "home decor diy", "furniture making")
 - Include file format tags (e.g., "svg cut files", "cnc router files")
-- Use exact phrases that customers search for
+- Use exact phrases that potential customers search for
 
 **IMPORTANT FINAL INSTRUCTION:**
 The entire output must be ONLY the raw JSON object. Do not include any introductory text, explanations, comments, or markdown formatting like
